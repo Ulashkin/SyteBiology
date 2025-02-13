@@ -66,4 +66,4 @@ def home(request):
         'subjects': 'Біологія, Хімія',
         'description': 'Короткий опис про роботу вчителя',
     }
-    return render(request, 'home.html', context)
+    return render(request, 'projects/home.html', context)
