@@ -6,24 +6,17 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Список проектов</h1>
-        <table class="table table-striped mt-3">
-            <thead>
-                <tr>
-                    <th>Название</th>
-                    <th>Описание</th>
-                    <th>Файл</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for project in projects %}
-                <tr>
-                    <td>{{ project.title }}</td>
-                    <td>{{ project.description }}</td>
-                    <td><a href="{{ project.file.url }}">Скачать</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <h1 class="mt-5">Мои проекты</h1>
+        <a href="{% url 'project_create' %}" class="btn btn-success">Добавить проект</a>
+        <ul class="list-group mt-3">
+            {% for project in projects %}
+                <li class="list-group-item">
+                    <h5>{{ project.title }}</h5>
+                    <p>{{ project.description }}</p>
+                    <a href="{% url 'project_edit' project.pk %}" class="btn btn-warning">Редактировать</a>
+                    <a href="{% url 'project_delete' project.pk %}" class="btn btn-danger">Удалить</a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
