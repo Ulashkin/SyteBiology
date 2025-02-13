@@ -53,3 +53,10 @@ def project_create(request):
     else:
         form = ProjectForm()
     return render(request, 'projects/project_form.html', {'form': form})
+
+def project_list(request):
+    projects = Project.objects.all()
+    return render(request, 'project_list.html', {'project': projects})
+
+def home(request):
+    return render(request, 'home.html')

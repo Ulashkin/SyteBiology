@@ -1,0 +1,12 @@
+<head>
+    <title>Список проектов</title>
+</head>
+<body>
+    <h1>Список проектов</h1>
+    <ul>
+        {% for project in projects %}
+            <li>{{ project.name }} - {{ project.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
