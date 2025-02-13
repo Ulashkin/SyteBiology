@@ -6,6 +6,7 @@ from .models import Project
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -59,5 +60,10 @@ def project_list(request):
     return render(request, 'project_list.html', {'project': projects})
 
 def home(request):
-    
-    return render(request, 'home.html')
+    context = {
+        'teacher_name': 'Імя вчителя',
+        'work_experience': '12 років',
+        'subjects': 'Біологія, Хімія',
+        'description': 'Короткий опис про роботу вчителя',
+    }
+    return render(request, 'home.html', context)
