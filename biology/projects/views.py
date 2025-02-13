@@ -5,8 +5,6 @@ from .forms import UserRegistrationForm, ProjectForm
 from .models import Project
 from django.contrib.auth.decorators import login_required
 
-
-
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -21,11 +19,6 @@ def register(request):
 def projects_list(request):
     projects = Project.objects.all()
     return render(request, 'projects/projects_list.html', {'projects': projects})
-
-
-
-
-
 @login_required
 def project_edit(request, pk):
     project = get_object_or_404(Project, pk=pk)
