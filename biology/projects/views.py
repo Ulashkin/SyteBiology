@@ -1,9 +1,10 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from .forms import UserRegistrationForm, ProjectForm
 from .models import Project
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 def register(request):
     if request.method == 'POST':
@@ -16,8 +17,10 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'projects/register.html', {'form': form})
 
+
+
 def projects_list(request):
-    projects = Project.objects.all()
+    projects = Project.objects.filter(author=request.user)
     return render(request, 'projects/projects_list.html', {'projects': projects})
 @login_required
 def project_edit(request, pk):
@@ -38,3 +41,15 @@ def project_delete(request, pk):
         project.delete()
         return redirect('projects_list')
     return render(request, 'projects/project_confirm_delete.html', {'project': project})
+@login_required
+def project_create(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.author = request.user
+            project.save()
+            return redirect('projects_list')
+    else:
+        form = ProjectForm()
+    return render(request, 'projects/project_form.html', {'form': form})
