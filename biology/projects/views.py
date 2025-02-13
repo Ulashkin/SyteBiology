@@ -18,7 +18,7 @@ def register(request):
     return render(request, 'projects/register.html', {'form': form})
 
 
-
+@login_required
 def projects_list(request):
     projects = Project.objects.filter(author=request.user)
     return render(request, 'projects/projects_list.html', {'projects': projects})
@@ -59,4 +59,5 @@ def project_list(request):
     return render(request, 'project_list.html', {'project': projects})
 
 def home(request):
+    
     return render(request, 'home.html')
