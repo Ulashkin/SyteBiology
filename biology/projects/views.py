@@ -3,10 +3,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from .forms import UserRegistrationForm, ProjectForm
 from .models import Project
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
+
+def is_admin(user):
+    return user.is_superuser
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
