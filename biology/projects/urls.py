@@ -13,5 +13,3 @@ urlpatterns = [
     #path('projects/', views.project_list, name='project_list'),
     
 ]
-
-
