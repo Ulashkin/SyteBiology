@@ -3,7 +3,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login 
 from .forms import UserRegistrationForm, ProjectForm, OrderForm
 from .models import Project, Order
+from .telegram_utils import send_telegram_message 
+import logging
+import asyncio
 
+logger = logging.getLogger(__name__)
 def is_admin(user):
     return user.is_superuser
 
@@ -79,6 +83,23 @@ def make_order(request, pk):
             order.user = request.user
             order.project = project
             order.save()
+
+          
+            logger.info(f"Order saved: {order.id}")
+            print(f"Order saved: {order.id}")
+
+            
+            chat_id = '739291248'  
+            message = f"Новий запит на замовлення проекту: {project.name}"
+
+            try:
+                asyncio.run(send_telegram_message(chat_id, message))
+                logger.info(f"Повідомлення відправлено: {message}")
+                print(f"Повідомлення відправлено: {message}")
+            except Exception as e:
+                logger.error(f"Помилка відправки повідомлення: {e}")
+                print(f"Помилка відправки повідомлення: {e}")
+
             return redirect('projects_list')
     else:
         form = OrderForm()
@@ -87,3 +108,5 @@ def make_order(request, pk):
 def profile(request):
     user = request.user
     return render(request, 'projects/profile.html', {'user': user})
+
+
