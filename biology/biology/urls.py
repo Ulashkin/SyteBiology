@@ -20,16 +20,21 @@ from django.contrib.auth import views as auth_views
 from projects import views
 from django.conf import settings
 from django.conf.urls.static import static 
+from projects.views import profile
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('projects/', include('projects.urls')),
+    path('projects', include('projects.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='projects/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', views.home, name='home'),
-      path('register/', views.register, name='register'),
-       path('edit/<int:pk>/', views.project_edit, name='project_edit'),
+    path('register/', views.register, name='register'),
+    path('edit/<int:pk>/', views.project_edit, name='project_edit'),
     path('delete/<int:pk>/', views.project_delete, name='project_delete'),
     path('create/', views.project_create, name='project_create'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('profile/', profile, name='profile'), 
+    path('accounts/profile/', profile, name='accounts_profile'), 
+     path('projects_list/', views.projects_list, name='projects_list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 
 

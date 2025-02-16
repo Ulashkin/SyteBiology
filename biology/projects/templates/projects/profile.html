@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вхід</title>
+    <title>Профіль користувача</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Вхід</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Вхід</button>
-        </form>
-        <p>Немає аккаунта? <a href="{% url 'register' %}">Зареєструйтесь</a></p>
+        <h1>Профіль користувача</h1>
+        <p>Ім'я: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        
+        <!-- Додайте іншу інформацію про користувача за потреби -->
+
+        <!-- Додано кнопку "Назад" -->
         <div class="mt-3">
             <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
         </div>
