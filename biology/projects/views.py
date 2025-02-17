@@ -90,7 +90,7 @@ def make_order(request, pk):
 
             
             chat_id = '739291248'  
-            message = f"Новий запит на замовлення проекту: {project.name}"
+            message = f"Новий запит на замовлення проекту: {project.name}"f"Новий запит на замовлення проекту: {project.name}\nІм'я: {order.name}\nКоментар: {order.comment}\nЕлектронна пошта: {order.user.email}"
 
             try:
                 asyncio.run(send_telegram_message(chat_id, message))

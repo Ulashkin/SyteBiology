@@ -16,11 +16,11 @@ class UserRegistrationForm(UserCreationForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['name', 'description', 'image']
+        fields = ['name', 'description', 'file']
 
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = []
+        fields = ['name', 'comment']

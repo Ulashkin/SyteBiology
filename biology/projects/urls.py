@@ -14,7 +14,3 @@ urlpatterns = [
     path('make_order/<int:pk>/', make_order, name='make_order'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
-user = User.objects.get(username='Ulashkin')
-print(user.is_superuser)  # True, якщо користувач адміністратор
-print(user.is_staff)  # True, якщо користувач є членом персоналу
-print(user.is_authenticated)  # True, якщо користувач увійшов до системи

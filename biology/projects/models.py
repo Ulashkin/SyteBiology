@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='projects/', default='default_image.jpg')
+    file = models.FileField(upload_to='projects/', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects')
 
     def __str__(self):
@@ -13,9 +13,11 @@ class Project(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100,default='Без імені')
+    comment = models.TextField(default='Без коментаря')
     date_created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50, default='Pending')
-
+    file = models.FileField(upload_to='uploads/', null=True, blank=True)
     def __str__(self):
         return f"Order {self.id} by {self.user.username}"
     
