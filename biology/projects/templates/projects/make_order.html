@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Замовити проект</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,8 +42,7 @@
             <button type="submit" class="btn btn-success">Підтвердити замовлення</button>
         </form>
         
-        <!-- Додано кнопку "Назад" -->
-        <div class="mt-3">
+        <div class="text-center mt-3">
             <a href="{% url 'projects_list' %}" class="btn btn-secondary">Назад</a>
         </div>
     </div>

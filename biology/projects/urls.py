@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import register, projects_list, project_edit, project_delete, project_create, home, profile, make_order
+from .views import register, upload_file, file_list, project_detail, projects_list, project_edit, project_delete, project_create, home, profile, make_order
 from django.contrib.auth.models import User
 urlpatterns = [
     path('register/', register, name='register'),
@@ -13,4 +13,8 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('make_order/<int:pk>/', make_order, name='make_order'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('projects/<int:pk>/', project_detail, name='project_detail'),
+     path('projects/', projects_list, name='projects_list'),
+      path('upload/', upload_file, name='upload_file'),
+    path('files/', file_list, name='file_list'),
 ]

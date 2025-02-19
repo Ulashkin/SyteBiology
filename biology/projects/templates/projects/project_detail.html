@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вхід</title>
+    <title>Деталі проекту</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -23,29 +23,31 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
         .btn-secondary {
             background-color: #6c757d;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
             color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Вхід</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Вхід</button>
-        </form>
-        <p>Немає аккаунта? <a href="{% url 'register' %}">Зареєструйтесь</a></p>
+        <h1>Деталі проекту: {{ project.name }}</h1>
+        <p><strong>Опис:</strong> {{ project.description }}</p>
+        <p><strong>Дата створення:</strong> {{ project.created_at }}</p>
+        <p><strong>Автор:</strong> {{ project.author }}</p>
+
+        {% if project.file %}
+            <p><strong>Прикріплений файл:</strong> <a href="{{ project.file.url }}" class="btn btn-primary">Переглянути файл</a></p>
+        {% else %}
+            <p>Немає прикріплених файлів.</p>
+        {% endif %}
         
         <div class="text-center mt-3">
-            <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+            <a href="{% url 'projects_list' %}" class="btn btn-secondary">Назад до списку проектів</a>
         </div>
     </div>
 </body>
-</html>

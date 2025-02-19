@@ -6,6 +6,8 @@ from .models import Project, Order
 from .telegram_utils import send_telegram_message 
 import logging
 import asyncio
+from .forms import FileUploadForm
+from .models import UploadedFile
 
 logger = logging.getLogger(__name__)
 def is_admin(user):
@@ -109,4 +111,21 @@ def profile(request):
     user = request.user
     return render(request, 'projects/profile.html', {'user': user})
 
+def project_detail(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    return render(request, 'projects/project_detail.html', {'project': project})
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('file_list')
+    else:
+        form = FileUploadForm()
+    return render(request, 'upload_file.html', {'form': form})
+
+def file_list(request):
+    files = UploadedFile.objects.all()
+    return render(request, 'file_list.html', {'files': files})
 

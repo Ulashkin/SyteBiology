@@ -35,6 +35,10 @@
         .btn-secondary {
             background-color: #6c757d;
         }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +49,11 @@
             <div class="project-card">
                 <h3>{{ project.name }}</h3>
                 <p>{{ project.description }}</p>
+                {% if project.file %}
+                    <a href="{{ project.file.url }}" class="btn btn-primary">Переглянути файл</a>
+                {% else %}
+                    <p>Немає прикріплених файлів.</p>
+                {% endif %}
                 <a href="{% url 'make_order' project.pk %}" class="btn btn-success">Замовити</a>
             </div>
         {% endfor %}
