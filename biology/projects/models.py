@@ -6,7 +6,7 @@ class Project(models.Model):
     description = models.TextField()
     file = models.FileField(upload_to='projects/', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects')
-
+    file = models.FileField(upload_to='project_files/', blank=True, null=True)
     def __str__(self):
         return self.name
 
