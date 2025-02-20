@@ -17,14 +17,18 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            text-align: center;
         }
         h1 {
             color: #007bff;
-            text-align: center;
             margin-bottom: 20px;
         }
-        p {
+        .teacher-photo {
+            margin: 20px auto;
+        }
+        .teacher-info p {
             font-size: 18px;
+            margin: 10px 0;
         }
         .btn-custom {
             margin: 5px;
@@ -43,21 +47,25 @@
 <body>
     <div class="container">
         <h1>Сайт учителя Біології</h1>
-        <div class="text-center">
+        <div class="teacher-photo">
             <img src="{% static 'images/1.jpg' %}" alt="Фото учителя" class="img-fluid rounded-circle" width="200">
+  
         </div>
-        <p><strong>Ім'я:</strong> Ім'я вчителя</p>
-        <p><strong>Досвід роботи:</strong> 12 років</p>
-        <p><strong>Предмети:</strong> Біологія, Хімія</p>
-        <p><strong>Опис:</strong> Короткий опис про роботу вчителя</p>
-    </div>
+        <div class="teacher-info">
+            <p><strong>Ім'я:</strong> Ім'я вчителя</p>
+            <p><strong>Досвід роботи:</strong> 12 років</p>
+            <p><strong>Предмети:</strong> Біологія, Хімія</p>
+            <p><strong>Опис:</strong> Короткий опис про роботу вчителя</p>
+        </div>
 
-    <div class="text-center mt-4">
-        <a href="{% url 'register' %}" class="btn btn-custom btn-primary">Зареєструватися</a>
-        <a href="{% url 'login' %}" class="btn btn-custom btn-secondary">Вхід</a>
-    </div>
-    
-    <div class="text-center mt-3">
-        <a href="{% url 'projects_list' %}" class="btn btn-custom btn-info">Проекти</a>
+        <div class="text-center mt-4">
+            <a href="{% url 'register' %}" class="btn btn-custom btn-primary">Зареєструватися</a>
+            <a href="{% url 'login' %}" class="btn btn-custom btn-secondary">Вхід</a>
+        </div>
+        
+        <div class="text-center mt-3">
+            <a href="{% url 'projects_list' %}" class="btn btn-custom btn-info">Проекти</a>
+        </div>
     </div>
 </body>
+</html>
