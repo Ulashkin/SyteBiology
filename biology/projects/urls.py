@@ -17,4 +17,5 @@ urlpatterns = [
      path('projects/', projects_list, name='projects_list'),
       path('upload/', upload_file, name='upload_file'),
     path('files/', file_list, name='file_list'),
+    
 ]

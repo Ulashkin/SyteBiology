@@ -33,3 +33,13 @@ class FileUploadForm(forms.ModelForm):
     class Meta:
         model = UploadedFile
         fields = ['title', 'file']
+
+class ProjectFilterForm(forms.Form):
+    name = forms.CharField(max_length=100, required=False, label='Фільтр за назвою')
+    description = forms.ChoiceField(choices=[
+        ('', 'Виберіть опис'),
+        ('Ботаніка', 'Ботаніка'),
+        ('Зоологія', 'Зоологія'),
+        ('Анатомія', 'Анатомія')
+    ], required=False, label='Фільтр за описом')
+        

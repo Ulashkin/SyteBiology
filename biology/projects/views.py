@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test,permission_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login 
-from .forms import UserRegistrationForm, ProjectForm, OrderForm
+from .forms import ProjectFilterForm, UserRegistrationForm, ProjectForm, OrderForm
 from .models import Project, Order
 from .telegram_utils import send_telegram_message 
 import logging
@@ -34,14 +34,29 @@ def register(request):
     return render(request, 'projects/register.html', {'form': form})
 
 def projects_list(request):
+    form = ProjectFilterForm(request.GET)
     projects = Project.objects.all()
+
+    if form.is_valid():
+        print("Форма дійсна")
+        name = form.cleaned_data.get('name')
+        description = form.cleaned_data.get('description')
+        
+        if name:
+            projects = projects.filter(name__icontains=name)
+        if description:
+            projects = projects.filter(description__icontains=description)
+        print("Знайдено проекти:", projects)
+    else:
+        print("Форма недійсна:", form.errors)
+
     if request.user.is_authenticated:
         if request.user.is_superuser:
-            return render(request, 'projects/admin_projects_list.html', {'projects': projects})
+            return render(request, 'projects/admin_projects_list.html', {'projects': projects, 'form': form})
         else:
-            return render(request, 'projects/user_projects_list.html', {'projects': projects})
+            return render(request, 'projects/user_projects_list.html', {'projects': projects, 'form': form})
     else:
-        return render(request, 'projects/public_projects_list.html', {'projects': projects})
+        return render(request, 'projects/public_projects_list.html', {'projects': projects, 'form': form})
 @login_required
 def project_edit(request, pk):
     project = get_object_or_404(Project, pk=pk)
