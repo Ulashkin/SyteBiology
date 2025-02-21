@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакти</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Контакти</h1>
+        <p>Це сторінка контактів.</p>
+        <a href="{% url 'home' %}">Головна</a>
+        <a href="{% url 'about' %}">Про нас</a>
+    </div>
+</body>
+</html>
