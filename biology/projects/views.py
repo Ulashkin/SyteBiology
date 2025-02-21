@@ -144,3 +144,9 @@ def file_list(request):
     files = UploadedFile.objects.all()
     return render(request, 'file_list.html', {'files': files})
 
+
+def about(request):
+    return render(request, 'projects/about.html')
+
+def contact(request):
+    return render(request, 'projects/contact.html')
