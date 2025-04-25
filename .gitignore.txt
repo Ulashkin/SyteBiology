@@ -1,0 +1,5 @@
+# .gitignore
+
+# Сюди додаємо файли, які не хочемо пушити в GitHub
+
+media/project_files/Відеоогляд.mp4_
