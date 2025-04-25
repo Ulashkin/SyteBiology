@@ -1,0 +1,13 @@
+h1 {
+    color: white !important;
+    font-size: 2.5rem !important;
+    font-weight: bold !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important;
+    background-color: hsla(128, 90%, 24%, 0.8) !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}

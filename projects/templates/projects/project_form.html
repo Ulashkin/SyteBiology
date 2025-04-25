@@ -1,0 +1,18 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення/Редагування матеріала</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">{{ form.instance.pk|yesno:"Редагування,Cтворення матеріала" }}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+        </form>
+        <a href="{% url 'projects_list' %}" class="btn btn-secondary mt-3">Назад</a>
+    </div>
+</body>

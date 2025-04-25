@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список матеріалів</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .header {
+            background-color: #0b6b21ea;
+            color: white;
+            padding: 3px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .header a {
+            color: rgb(26, 4, 4);
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        background-color: hsla(128, 90%, 24%, 0.616);
+        padding: 3px;
+        border-radius: 10px;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        }
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .header img {
+            width: 50px;
+            height: auto;
+            margin-right: 500px;
+            ;
+        }
+        
+        .project-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card h3 {
+            font-size: 1.4rem;
+            color: #1673de;
+        }
+        .project-card p {
+            font-size: 1rem;
+            color: #110303;
+        }
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        /* Делаем карточку полностью кликабельной */
+        .clickable-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;}
+
+            .container1 {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 110px;}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="{% static 'images/2.png' %}" alt="Фото учителя">
+                
+            </div>
+            <div>
+                <a href="{% url 'home' %}">Головна</a>
+                <a href="{% url 'contact' %}">Контакти</a>
+                <a href="{% url 'profile' %}">Профіль користувача</a>
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <h1>Список матеріалів</h1> <!-- Фильтр -->
+        <div class="mb-3">
+            <form method="get" id="filterForm">
+                <input type="text" name="name" value="{{ name_filter }}" class="form-control" placeholder="Фільтр за назвою">
+                <select name="category" class="form-control mt-3">
+                    <option value="">Виберіть розділ</option>
+                    <option value="5 клас" {% if category_filter == "5 клас" %}selected{% endif %}>5 клас</option>
+                    <option value="6 клас" {% if category_filter == "6 клас" %}selected{% endif %}>6 клас</option>
+                    <option value="7 клас" {% if category_filter == "7 клас" %}selected{% endif %}>7 клас</option>
+                    <option value="8 клас" {% if category_filter == "8 клас" %}selected{% endif %}>8 клас</option>
+                    <option value="9 клас" {% if category_filter == "9 клас" %}selected{% endif %}>9 клас</option>
+                    <option value="10 клас" {% if category_filter == "10 клас" %}selected{% endif %}>10 клас</option>
+                    <option value="11 клас" {% if category_filter == "11 клас" %}selected{% endif %}>11 клас</option>
+                    <option value="Загальне" {% if category_filter == "Загальне" %}selected{% endif %}>Загальне</option>
+                    <option value="Виховання" {% if category_filter == "Виховання" %}selected{% endif %}>Виховання</option>
+
+
+                </select>
+                <button type="submit" class="btn btn-primary mt-3">Застосувати фільтри</button>
+                <button type="button" class="btn btn-warning mt-3" onclick="clearFilters()">Очистити фільтри</button>
+            </form>
+        </div>
+
+        <!-- Сетка проектов -->
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <a href="{% url 'project_detail' project.pk %}" class="clickable-card">
+                        <div class="project-card">
+                            {% if project.image %}
+                                <img src="{{ project.image.url }}" alt="{{ project.name }}" class="project-image">
+                            {% else %}
+                                <img src="{% static 'default-placeholder.png' %}" alt="Немає зображення" class="project-image">
+                            {% endif %}
+                            <h3>{{ project.name }}</h3>
+                            <p>{{ project.category }}</p>
+                            
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Кнопка назад -->
+        <div class="text-center mt-3">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+        </div>
+    </div>
+
+    <script>
+        function clearFilters() {
+            document.querySelector('input[name="name"]').value = '';
+            document.querySelector('select[name="category"]').selectedIndex = 0;
+            document.getElementById('filterForm').submit();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт учителя Біології</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("{% static 'images/3.png' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .header {
+            background-color: #0b6b21ea;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .header img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .header a {
+            color: rgb(12, 1, 1);
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .teacher-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+        }
+        .teacher-photo img {
+            max-width: 250px;
+            height: auto;
+            border-radius: 50%;
+        }
+        .teacher-info {
+            flex: 1;
+            padding-left: 20px;
+        }
+        h1 {
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        background-color: hsla(128, 90%, 24%, 0.616);
+        padding: 3px;
+        border-radius: 10px;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="{% static 'images/2.png' %}" alt="Фото учителя">
+                <h1 class="h4 m-0">Інтерактивна Біологія</h1>
+            </div>
+            <div>
+                
+                <a href="{% url 'projects_list' %}">Методичні матеріали</a>
+                <a href="{% url 'contact' %}">Контакти</a>
+                <a href="{% url 'profile' %}">Профіль користувача</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5 pt-5">
+        
+        <div class="teacher-section">
+            <div class="teacher-photo">
+                <img src="{% static 'images/1.jpg' %}" alt="Логотип" class="img-fluid">
+            </div>
+            <div class="teacher-info">
+                
+
+                <p></p>
+                <p>Мої вітання, шановні колеги!</p>
+                <strong>Це я - Улашкіна Ольга Вікторівна, учитель біології.</strong>
+                <p>Я люблю створювати різні методичні матеріали: ігри, інтерактиви, кейси, вправи, тощо. Я щиро розділяю думку, що немає іншого способу "змусити" учнів навчатися, як розбудити їх внутрішній інтерес. Тому, в кожній роботі я намагаюся поєднати навчальну, корисну частину з інтересами, поглядами підлітків та юнацтва.</p>
+                <p><strong>А це мій невеличкий сайт.</strong> Тут є частина педагогічної роботи та скарбничка авторських матеріалів, де кожен із Вас зможе знайти щось для себе і своїх учнів.</p>
+                <p>З повагою, Ольга Вікторівна</p>
+                
+               
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

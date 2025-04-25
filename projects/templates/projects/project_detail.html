@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі проекту</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Деталі проекту: {{ project.name }}</h1>
+        <p><strong>Категорія:</strong> {{ project.category }}</p>
+        <p><strong>Опис:</strong> {{ project.description }}</p>
+        <p><strong>Дата створення:</strong> {{ project.created_at }}</p>
+        <p><strong>Автор:</strong> {{ project.author }}</p>
+        <p><strong>Ціна</strong> {{ project.description2 }}</p>
+
+       
+
+        {% if project.file %}
+            <p><strong>Прикріплений файл:</strong> <a href="{{ project.file.url }}" class="btn btn-primary">Переглянути файл</a></p>
+        {% else %}
+            <p>Немає прикріплених файлів.</p>
+        {% endif %}
+        <div class="text-center mt-3">
+            <a href="{% url 'make_order' project.pk %}" class="btn btn-success mt-2">Замовити</a>
+        </div>
+        <div class="text-center mt-3">
+            <a href="{% url 'projects_list' %}" class="btn btn-secondary">Назад до списку проектів</a>
+        </div>
+        
+    </div>
+</body>

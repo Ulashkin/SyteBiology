@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід</title>
+    <link rel="stylesheet" href='static/css.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    
+    h1 {
+        color: white !important;
+        font-size: 2.5rem !important;
+        font-weight: bold !important;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important;
+        background-color: hsla(128, 90%, 24%, 0.8) !important;
+        padding: 15px !important;
+        border-radius: 10px !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1 mt-5 pt-5>Вхід</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Вхід</button>
+        </form>
+        <p>Немає аккаунта? <a href="{% url 'register' %}">Зареєструйтесь</a></p>
+        <div class="mt-3">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Назад</a>
+        </div>
+    </div>
+</body>
+</html>
