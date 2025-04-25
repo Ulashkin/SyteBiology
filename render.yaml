@@ -9,4 +9,4 @@ services:
       python manage.py runserver 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: biology.settings
+        value: biology.settingsі
