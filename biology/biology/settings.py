@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--7i4u0wybe40(@iv*b53)b!wn#wj(hk&d#*)kd5&xl#2_h31#y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://sytebiology.onrender.com']
 
 
 # Application definition
