@@ -4,6 +4,8 @@ from .views import register, view_file,filter_projects, upload_file,contact,abou
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.conf.urls.static import static 
+from django.urls import path
+from .views import upload_image
 urlpatterns = [
     path('register/', register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
@@ -21,6 +23,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('projects/files/<int:file_id>/', view_file, name='view_file'),
     path('projects/filter/', filter_projects, name='filter_projects'),
+    path('upload/', upload_image, name='upload_image'),
 ]
 
 

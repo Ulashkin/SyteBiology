@@ -52,3 +52,8 @@ class ProjectFilterForm(forms.Form):
         ('Загальне', 'Загальне'),
         ('Виховання', 'Виховання'),
     ], required=False, label='Фільтр за категорією')
+
+    from django import forms
+
+class ImageUploadForm(forms.Form):
+    image = forms.ImageField()

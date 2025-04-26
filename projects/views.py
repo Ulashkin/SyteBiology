@@ -172,3 +172,25 @@ def filter_projects(request):
             projects = projects.filter(category=category)
     
     return render(request, 'projects/projects.html', {'form': form, 'projects': projects})
+
+from cloudinary.uploader import upload
+from django.http import JsonResponse
+
+def upload_image(request):
+    if request.method == 'POST' and request.FILES['image']:
+        file = request.FILES['image']
+        upload_response = upload(file)
+        return JsonResponse({'url': upload_response['url']})
+    
+    from django.shortcuts import render
+from .forms import ImageUploadForm
+
+def image_upload_view(request):
+    if request.method == 'POST' and request.FILES['image']:
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            # Ваш код для завантаження на Cloudinary
+    else:
+        form = ImageUploadForm()
+    return render(request, 'upload_image.html', {'form': form})
