@@ -137,3 +137,5 @@ LOGIN_REDIRECT_URL = 'home'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 import os
 PORT = os.environ.get('PORT', 8000)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
