@@ -147,3 +147,9 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+import cloudinary
+cloudinary.config(
+    cloud_name='dvq4xvac1',
+    api_key='527764773439791',
+    api_secret='mO0sMS_j0baV_PLCF5eFVaHAZHQ'
+)

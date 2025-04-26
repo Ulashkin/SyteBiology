@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import cloudinary
 import os
 from pathlib import Path
 
@@ -139,3 +139,8 @@ import os
 PORT = os.environ.get('PORT', 8000)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+cloudinary.config(
+    cloud_name='dvq4xvac1',
+    api_key='527764773439791',
+    api_secret='mO0sMS_j0baV_PLCF5eFVaHAZHQ'
+)
