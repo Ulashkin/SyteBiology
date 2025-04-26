@@ -2,6 +2,8 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from .views import register, view_file,filter_projects, upload_file,contact,about,  file_list, project_detail, projects_list, project_edit, project_delete, project_create, home, profile, make_order
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.conf.urls.static import static 
 urlpatterns = [
     path('register/', register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
@@ -23,3 +25,5 @@ urlpatterns = [
     path('projects/', filter_projects, name='filter_projects'),
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
