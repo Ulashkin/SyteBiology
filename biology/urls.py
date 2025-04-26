@@ -36,7 +36,7 @@ urlpatterns = [
     path('accounts/profile/', profile, name='accounts_profile'), 
     # path('projects/', views.projects_list, name='projects_list'),
       
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
