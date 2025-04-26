@@ -11,19 +11,17 @@ urlpatterns = [
     path('edit/<int:pk>/', project_edit, name='project_edit'),
     path('delete/<int:pk>/', project_delete, name='project_delete'),
     path('create/', project_create, name='project_create'),
-    #path('home/', home, name='home'),
     path('profile/', profile, name='profile'),
     path('make_order/<int:pk>/', make_order, name='make_order'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('projects/<int:pk>/', project_detail, name='project_detail'),
-     path('projects/', projects_list, name='projects_list'),
-      path('upload/', upload_file, name='upload_file'),
+    path('upload/', upload_file, name='upload_file'),
     path('files/', file_list, name='file_list'),
-     path('about/', about, name='about'),
+    path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
-     path('projects/files/<int:file_id>/', view_file, name='view_file'),
-    path('projects/', filter_projects, name='filter_projects'),
-
+    path('projects/files/<int:file_id>/', view_file, name='view_file'),
+    path('projects/filter/', filter_projects, name='filter_projects'),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
