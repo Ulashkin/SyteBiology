@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'projects',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,13 @@ LOGOUT_REDIRECT_URL = 'home'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
 MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'media')
+
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dvq4xvac1',
+    'API_KEY': '527764773439791',
+    'API_SECRET': 'mO0sMS_j0baV_PLCF5eFVaHAZHQ'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
