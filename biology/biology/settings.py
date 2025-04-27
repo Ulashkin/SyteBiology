@@ -157,3 +157,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
+CSRF_TRUSTED_ORIGINS = ['https://sytebiology-production.up.railway.app']
