@@ -26,5 +26,5 @@ urlpatterns = [
     path('upload/', upload_image, name='upload_image'),
 ]
 
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

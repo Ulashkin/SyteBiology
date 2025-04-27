@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'projects',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -51,8 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
+
 
 ROOT_URLCONF = 'biology.urls'
 
@@ -139,8 +142,12 @@ import os
 PORT = os.environ.get('PORT', 8000)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-cloudinary.config(
-    cloud_name='dvq4xvac1',
-    api_key='527764773439791',
-    api_secret='mO0sMS_j0baV_PLCF5eFVaHAZHQ'
-)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dvq4xvac1',
+    'API_KEY': '884777547176818',
+    'API_SECRET': 'orfUH3twR4IwZnTAYhx0P3-XrsY'
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'

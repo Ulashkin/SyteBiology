@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'biology.urls'
@@ -142,14 +143,17 @@ MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'media')
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dvq4xvac1',
-    'API_KEY': '527764773439791',
-    'API_SECRET': 'mO0sMS_j0baV_PLCF5eFVaHAZHQ'
+    'API_KEY': '884777547176818',
+    'API_SECRET': 'orfUH3twR4IwZnTAYhx0P3-XrsY'
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-import cloudinary
-cloudinary.config(
-    cloud_name='dvq4xvac1',
-    api_key='527764773439791',
-    api_secret='mO0sMS_j0baV_PLCF5eFVaHAZHQ'
-)
+#import cloudinary
+#cloudinary.config(
+    #cloud_name='dvq4xvac1',
+    #api_key='527764773439791',
+    #api_secret='mO0sMS_j0baV_PLCF5eFVaHAZHQ'
+#)
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
