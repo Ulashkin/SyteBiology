@@ -11,7 +11,7 @@
  #     - key: DJANGO_SETTINGS_MODULE
  #       value: biology.settings
 
- services:
+services:
   - type: web
     name: sytebiology
     env: python
@@ -19,11 +19,11 @@
     startCommand: >
       python manage.py migrate &&
       python manage.py collectstatic --noinput &&
-      python manage.py runserver 0.0.0.0:$PORT
+      gunicorn biology.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: biology.settings
       - key: MEDIA_URL
         value: /media/
       - key: MEDIA_ROOT
-        value: C:\Users\Сергій\.git\Нова папка\SyteBiology\biology\media
+        value: media
