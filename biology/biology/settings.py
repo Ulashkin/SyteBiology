@@ -157,5 +157,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-CSRF_TRUSTED_ORIGINS = ['sytebiology.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://sytebiology.onrender.com']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
