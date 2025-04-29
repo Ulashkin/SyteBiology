@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--7i4u0wybe40(@iv*b53)b!wn#wj(hk&d#*)kd5&xl#2_h31#y
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 DEBUG = False
-ALLOWED_HOSTS = [ 'sytebiology-production.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [ 'sytebiology.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -151,5 +151,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-CSRF_TRUSTED_ORIGINS = ['https://sytebiology-production.up.railway.app']
-
+CSRF_TRUSTED_ORIGINS = ['sytebiology.onrender.com']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
